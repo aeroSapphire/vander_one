@@ -56,6 +56,7 @@ In another tab run rviz:
 rviz2
 ```
 Make sure you have these 3 topics selected:
+
 ![image](https://github.com/aeroSapphire/vander_one/assets/128461916/18c1045c-b858-446c-967e-b85d8da8db99)
 
 The next step is running active SLAM. For that, we use the 'explore' node provided by the active SLAM packages I mentioned. The implementation is a bit different in both cases.
