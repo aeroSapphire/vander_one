@@ -18,14 +18,14 @@ def generate_launch_description():
 
     # Include the robot_state_publisher launch file, provided by our own package. Force sim time to be enabled
     package_name='vander_one' #<--- CHANGE ME
-    use_sim_time = LaunchConfiguration('use_sim_time', default='false')
+    use_sim_time = LaunchConfiguration('use_sim_time', default='true')
     rviz_config_dir = os.path.join(get_package_share_directory(package_name),
                                    'rviz', 'slam_config.rviz')
 
     rsp = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory(package_name),'launch','rsp.launch.py'
-                )]), launch_arguments={'use_sim_time': use_sim_time}.items()
+                )]), launch_arguments={'use_sim_time': 'true'}.items()
     )
 
     gazebo_params_file = os.path.join(get_package_share_directory(package_name),'config','gazebo_params.yaml')
@@ -47,7 +47,6 @@ def generate_launch_description():
         package="controller_manager",
         executable="spawner",
         arguments=["diff_cont"],
-        remappings=[('/diff_cont/odom','/odom')]
     )
 
     joint_broad_spawner = Node(
@@ -56,33 +55,11 @@ def generate_launch_description():
         arguments=["joint_broad"],
     )
 
-    rviz_node = Node(
-        package='rviz2',
-        executable='rviz2',
-        name='rviz2',
-        arguments=['-d', rviz_config_dir],
-        parameters=[{'use_sim_time': use_sim_time}],
-        output='screen'
-    )
-
-    joint_state_publisher_gui = Node(
-        package="joint_state_publisher_gui",
-        executable="joint_state_publisher_gui"
-        #condition= LaunchConfigurationEquals("use_jsp", "gui")
-    )
-
     joint_state_publisher = Node(
         package="joint_state_publisher",
         executable="joint_state_publisher",
         condition= LaunchConfigurationEquals("use_jsp", "jsp")
     )
-
-    #teleop_node = Node(
-     #   package='teleop_twist_keyboard',
-      #  executable='teleop_twist_keyboard',
-       # name='teleop_node',
-        #remappings=[('/cmd_vel','/diff_cont/cmd_vel_unstamped')]
-    #)
 
     # Include the SLAM Toolbox launch file
     slam_toolbox_launch = IncludeLaunchDescription(
@@ -100,8 +77,8 @@ def generate_launch_description():
         rsp,
         gazebo,
         spawn_entity,
-        diff_drive_spawner,
+        joint_state_publisher,
         joint_broad_spawner,
-        slam_toolbox_launch,
-        joint_state_publisher
+        diff_drive_spawner,
+        slam_toolbox_launch
     ])
