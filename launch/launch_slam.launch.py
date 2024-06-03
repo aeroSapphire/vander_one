@@ -77,8 +77,6 @@ def generate_launch_description():
         rsp,
         gazebo,
         spawn_entity,
-        joint_state_publisher,
         joint_broad_spawner,
-        diff_drive_spawner,
-        slam_toolbox_launch
+        diff_drive_spawner
     ])

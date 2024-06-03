@@ -2,9 +2,9 @@
 
     <include file="$(find-pkg-share vander_one)/launch/launch_slam.launch.py"></include>
 
-    <include file="$(find-pkg-share nav2_bringup)/launch/navigation_launch.py">
+    <!--<include file="$(find-pkg-share nav2_bringup)/launch/navigation_launch.py">
         <arg name="params_file" value="$(find-pkg-share vander_one)/config/nav2_params.yaml"/>
-    </include>
+    </include>-->
 
     <!--<node pkg="nubot_nav" exec="explore"/>
 
