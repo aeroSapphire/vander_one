@@ -46,19 +46,13 @@ def generate_launch_description():
     diff_drive_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["diff_cont"],
+        arguments=["diff_cont"]
     )
 
     joint_broad_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["joint_broad"],
-    )
-
-    joint_state_publisher = Node(
-        package="joint_state_publisher",
-        executable="joint_state_publisher",
-        condition= LaunchConfigurationEquals("use_jsp", "jsp")
+        arguments=["joint_broad"]
     )
 
     # Include the SLAM Toolbox launch file

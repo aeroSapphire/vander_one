@@ -29,7 +29,7 @@
     <gazebo>
         <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
             <parameters>$(find vander_one)/config/my_controllers.yaml</parameters>
-            <!--<parameters>$(find vander_one)/config/gaz_ros2_ctl_use_sim.yaml</parameters>-->
+            <parameters>$(find vander_one)/config/gaz_ros2_ctl_use_sim.yaml</parameters>
         </plugin>
     </gazebo>
 
