@@ -3,14 +3,15 @@
 <package format="3">
   <name>vander_one</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="my_email@email.com">aeroSapphire</maintainer>
+  <description>Autonomous robot package</description>
+  <maintainer email="hyuga370@gmail.com">aeroSapphire</maintainer>
   <license>TODO: License declaration</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
   <exec_depend>robot_localization</exec_depend>
   <exec_depend>cartographer_ros</exec_depend>
+  <exec_depend>cmd_vel_forwarder</exec_depend>
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 
