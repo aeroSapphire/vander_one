@@ -5,7 +5,8 @@ controller_manager:
 
     diff_cont:
       type: diff_drive_controller/DiffDriveController
-
+    skid_steer:
+      type: skid_steer_controller/SkidSteerController
     joint_broad:
       type: joint_state_broadcaster/JointStateBroadcaster
 
@@ -16,8 +17,8 @@ diff_cont:
 
     base_frame_id: base_link
 
-    left_wheel_names: ['left_wheel_joint']
-    right_wheel_names: ['right_wheel_joint']
+    left_wheel_names: ['left_rear','left_front']
+    right_wheel_names: ['right_rear','right_front']
     wheel_separation: 0.187
     wheel_radius: 0.065
 
@@ -25,7 +26,7 @@ diff_cont:
 
     # open_loop: false    
 
-    # wheels_per_side: x
+    wheels_per_side: 2
     # wheel_separation_multiplier: x
     # left_wheel_radius_multiplier: x
     # right_wheel_radius_multiplier: x
